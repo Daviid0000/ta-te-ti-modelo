@@ -1,165 +1,184 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.0.0/dist/tf.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.11.0"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet"></script>;
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>;
     <link rel="stylesheet" href="./style.css">
   </head>
   <body>
     <h1>Console Log for Ticky Tacky Toe Goodness</h1>
-    <!-- <img src="tablaVacia.jpg" width="30%" /> -->
     <div class="table">
         <div id="casilla-1">
             
         </div>
-        <div id="casilla-2">
-            
+          <div id="casilla-2"></div>
+          <div id="casilla-3"></div>
+          <div id="casilla-4"></div>
+          <div id="casilla-5"></div>
+          <div id="casilla-6"></div>
+          <div id="casilla-7"></div>
+          <div id="casilla-8"></div>
+          <div id="casilla-9"></div>
         </div>
-        <div id="casilla-3">
-            
-        </div>
-        <div id="casilla-4">
-            
-        </div>
-        <div id="casilla-5">
-            
-        </div>
-        <div id="casilla-6">
-            
-        </div>
-        <div id="casilla-7">
-            
-        </div>
-        <div id="casilla-8">
-            
-        </div>
-        <div id="casilla-9">
-            
-        </div>
-    </div>
 <script>
-  var tabla = []
-  const circulo = 'circulo.jpg'
-  const equis = 'equis.jpg'
+  // var tabla = []
+  // const circulo = 'circulo.jpg'
+  // const equis = 'equis.jpg'
 
-    const casilla_1 = document.getElementById('casilla-1')
-    casilla_1.addEventListener('click', async () => {
+  //   const casilla_1 = document.getElementById('casilla-1')
+  //   casilla_1.addEventListener('click', async () => {
 
-    const imagen1 = new Image()
-      imagen1.src = circulo
+  //   const imagen1 = new Image()
+  //     imagen1.src = circulo
 
-      if(imagen1 == circulo){
-        console.log("¡La imagen es un cirCULO!")
-      }
+  //     if(imagen1 == circulo){
+  //       console.log("¡La imagen es un cirCULO!")
+  //     }
       
-      // const casilla_2 = document.getElementById('casilla-2')
-      // const casilla_3 = document.getElementById('casilla-3')
-      // const casilla_4 = document.getElementById('casilla-4')
-      // const casilla_5 = document.getElementById('casilla-5')
-      // const casilla_6 = document.getElementById('casilla-6')
-      // const casilla_7 = document.getElementById('casilla-7')
-      // const casilla_8 = document.getElementById('casilla-8')
-      // const casilla_9 = document.getElementById('casilla-9')
+  //     const casilla_2 = document.getElementById('casilla-2')
+  //     const casilla_3 = document.getElementById('casilla-3')
+  //     const casilla_4 = document.getElementById('casilla-4')
+  //     const casilla_5 = document.getElementById('casilla-5')
+  //     const casilla_6 = document.getElementById('casilla-6')
+  //     const casilla_7 = document.getElementById('casilla-7')
+  //     const casilla_8 = document.getElementById('casilla-8')
+  //     const casilla_9 = document.getElementById('casilla-9')
     
-    casilla_1.appendChild(imagen1)
+  //   casilla_1.appendChild(imagen1)
 
-    tabla.push(casilla_1)
+  //   tabla.push(casilla_1)
 
-    console.log("imagen:", casilla_1)
+  //   console.log("imagen:", casilla_1)
 
-    console.log("array de imágenes:", tabla)
+  //   console.log("array de imágenes:", tabla)
 
-    console.log("img:", imagen1)
+  //   console.log("img:", imagen1)
 
-    })
+  //   })
 
-    const casilla_2 = document.getElementById('casilla-2')
-    casilla_2.addEventListener('click', () => {
+  //   const casilla_2 = document.getElementById('casilla-2')
+  //   casilla_2.addEventListener('click', () => {
       
-      const imagen2 = new Image()
-      imagen2.src = 'circulo.jpg'
+  //     const imagen2 = new Image()
+  //     imagen2.src = 'circulo.jpg'
 
-    const casilla_2 = document.getElementById('casilla-2')
-    const casilla_3 = document.getElementById('casilla-3')
-    const casilla_4 = document.getElementById('casilla-4')
-    const casilla_5 = document.getElementById('casilla-5')
-    const casilla_6 = document.getElementById('casilla-6')
-    const casilla_7 = document.getElementById('casilla-7')
-    const casilla_8 = document.getElementById('casilla-8')
-    const casilla_9 = document.getElementById('casilla-9')
-      tabla.push(imagen2)
-      tabla.push(casilla_1)
-      tabla.push(casilla_3)
-      tabla.push(casilla_4)
-      tabla.push(casilla_5)
-      tabla.push(casilla_6)
-      tabla.push(casilla_7)
-      tabla.push(casilla_8)
-      tabla.push(casilla_9)
+  //   const casilla_2 = document.getElementById('casilla-2')
+  //   const casilla_3 = document.getElementById('casilla-3')
+  //   const casilla_4 = document.getElementById('casilla-4')
+  //   const casilla_5 = document.getElementById('casilla-5')
+  //   const casilla_6 = document.getElementById('casilla-6')
+  //   const casilla_7 = document.getElementById('casilla-7')
+  //   const casilla_8 = document.getElementById('casilla-8')
+  //   const casilla_9 = document.getElementById('casilla-9')
+  //     tabla.push(imagen2)
+  //     tabla.push(casilla_1)
+  //     tabla.push(casilla_3)
+  //     tabla.push(casilla_4)
+  //     tabla.push(casilla_5)
+  //     tabla.push(casilla_6)
+  //     tabla.push(casilla_7)
+  //     tabla.push(casilla_8)
+  //     tabla.push(casilla_9)
 
-    console.log("array de imágenes actualizado:", tabla)
+  //   console.log("array de imágenes actualizado:", tabla)
 
-    })
+  //   })
 
-    const casilla_3 = document.getElementById('casilla-3')
-    casilla_3.addEventListener('click', () => {
-      casilla_3.style.backgroundImage = 'url(circulo.jpg)'
-      casilla_3.style.backgroundRepeat = 'no-repeat'
-    })
+  //   const casilla_3 = document.getElementById('casilla-3')
+  //   casilla_3.addEventListener('click', () => {
+  //     casilla_3.style.backgroundImage = 'url(circulo.jpg)'
+  //     casilla_3.style.backgroundRepeat = 'no-repeat'
+  //   })
 
-    const casilla_4 = document.getElementById('casilla-4')
-    casilla_4.addEventListener('click', () => {
-      casilla_4.style.backgroundImage = 'url(circulo.jpg)'
-      casilla_4.style.backgroundRepeat = 'no-repeat'
-    })
+  //   const casilla_4 = document.getElementById('casilla-4')
+  //   casilla_4.addEventListener('click', () => {
+  //     casilla_4.style.backgroundImage = 'url(circulo.jpg)'
+  //     casilla_4.style.backgroundRepeat = 'no-repeat'
+  //   })
 
-    const casilla_5 = document.getElementById('casilla-5')
-    casilla_5.addEventListener('click', () => {
-      casilla_5.style.backgroundImage = 'url(circulo.jpg)'
-      casilla_5.style.backgroundRepeat = 'no-repeat'
-    })
+  //   const casilla_5 = document.getElementById('casilla-5')
+  //   casilla_5.addEventListener('click', () => {
+  //     casilla_5.style.backgroundImage = 'url(circulo.jpg)'
+  //     casilla_5.style.backgroundRepeat = 'no-repeat'
+  //   })
 
-    const casilla_6 = document.getElementById('casilla-6')
-    casilla_6.addEventListener('click', () => {
-      casilla_6.style.backgroundImage = 'url(circulo.jpg)'
-      casilla_6.style.backgroundRepeat = 'no-repeat'
-    })
+  //   const casilla_6 = document.getElementById('casilla-6')
+  //   casilla_6.addEventListener('click', () => {
+  //     casilla_6.style.backgroundImage = 'url(circulo.jpg)'
+  //     casilla_6.style.backgroundRepeat = 'no-repeat'
+  //   })
 
-    const casilla_7 = document.getElementById('casilla-7')
-    casilla_7.addEventListener('click', () => {
-      casilla_7.style.backgroundImage = 'url(circulo.jpg)'
-      casilla_7.style.backgroundRepeat = 'no-repeat'
-    })
+  //   const casilla_7 = document.getElementById('casilla-7')
+  //   casilla_7.addEventListener('click', () => {
+  //     casilla_7.style.backgroundImage = 'url(circulo.jpg)'
+  //     casilla_7.style.backgroundRepeat = 'no-repeat'
+  //   })
 
-    const casilla_8 = document.getElementById('casilla-8')
-    casilla_8.addEventListener('click', () => {
-      casilla_8.style.backgroundImage = 'url(circulo.jpg)'
-      casilla_8.style.backgroundRepeat = 'no-repeat'
-    })
+  //   const casilla_8 = document.getElementById('casilla-8')
+  //   casilla_8.addEventListener('click', () => {
+  //     casilla_8.style.backgroundImage = 'url(circulo.jpg)'
+  //     casilla_8.style.backgroundRepeat = 'no-repeat'
+  //   })
 
-    const casilla_9 = document.getElementById('casilla-9')
-    casilla_9.addEventListener('click', () => {
-      casilla_9.style.backgroundImage = 'url(circulo.jpg)'
-      casilla_9.style.backgroundRepeat = 'no-repeat'
-    })
+  //   const casilla_9 = document.getElementById('casilla-9')
+  //   casilla_9.addEventListener('click', () => {
+  //     casilla_9.style.backgroundImage = 'url(circulo.jpg)'
+  //     casilla_9.style.backgroundRepeat = 'no-repeat'
+  //   })
          
-// tf.ready().then(() => {
-//   const modelPath = 'model/ttt_model.json'
-//   tf.tidy(() => {
-//     tf.loadLayersModel(modelPath)
-//     .then((model) => {
-      
-//       const tablaVacia = tf.zeros([9])
-//       const betterBlockMe = tf.tensor([-1, 0, 0, 1, 1, -1, 0, 0, -1])
-//       const goForTheKill = tf.tensor([1, 0, 1, 0, -1, -1, -1, 0, 1])
+tf.ready().then(() => {
+  const modelPath = 'model/ttt_model.json'
+  tf.tidy(() => {
+    tf.loadLayersModel(modelPath)
+    .then((model) => {
 
-//       const matches = tf.stack([tablaVacia, betterBlockMe, goForTheKill])
-//       const result = model.predict(matches)
-      
-//       result.reshape([3, 3, 3]).print()
-//     })
-//   })
-// })
+      const jugadorJuega = (casillaID) => {
+        const casilla = document.getElementById(casillaID)
+        casilla.style.backgroundImage = 'url(circulo.jpg)'
+        casilla.style.backgroundRepeat = 'no-repeat'
+        
+        let tablaVacia = tf.zeros([9])
+        
+        tablaVacia = tf.tensor([0, 0, 0, 0, 0, 0, 0, 0, 0])
+        const matches = tf.stack([tablaVacia])
+        return matches;
+      }
+
+      result.reshape([3, 3]).print()
+
+
+
+      const casilla_1 = document.getElementById('casilla-1')
+      casilla_1.addEventListener('click', () => {
+
+        tablaVacia = tf.tensor([1, 0, 0, 0, 0, 0, 0, 0, 0])
+        const matches = tf.stack([tablaVacia])
+        const result = model.predict(matches)
+
+      result.reshape([3, 3]).print()
+
+        let array = result.arraySync()
+        
+        const newArray = result[0] = 1
+  
+        let valorAlto = -Infinity;
+  
+        array.forEach((value, index) => {
+              value.forEach(element => {
+                const item = element * 100
+                valorAlto = Math.max(valorAlto, item);
+                console.log("valoress: ", item);
+              });
+              console.log("valor alto:", valorAlto, " indice:", (value.length)) 
+  
+            });
+      })
+    })
+
+
+  })
+})
 </script>
   </body>
 </html>
