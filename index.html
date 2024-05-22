@@ -22,163 +22,53 @@
           <div id="casilla-9"></div>
         </div>
 <script>
-  // var tabla = []
-  // const circulo = 'circulo.jpg'
-  // const equis = 'equis.jpg'
+   document.addEventListener('DOMContentLoaded', () => {
+        let tabla = Array(9).fill(0); // Inicializar tabla con ceros
+        let isPlayerTurn = true; // Variable para controlar el turno del jugador
 
-  //   const casilla_1 = document.getElementById('casilla-1')
-  //   casilla_1.addEventListener('click', async () => {
+        const circulo = 'O';
+        const equis = 'X';
 
-  //   const imagen1 = new Image()
-  //     imagen1.src = circulo
+        // Función para manejar el clic del jugador
+        function handleCasillaClick(event) {
+          const casilla = event.target;
+          const casillaIndex = parseInt(casilla.id.split('-')[1]) - 1;
 
-  //     if(imagen1 == circulo){
-  //       console.log("¡La imagen es un cirCULO!")
-  //     }
-      
-  //     const casilla_2 = document.getElementById('casilla-2')
-  //     const casilla_3 = document.getElementById('casilla-3')
-  //     const casilla_4 = document.getElementById('casilla-4')
-  //     const casilla_5 = document.getElementById('casilla-5')
-  //     const casilla_6 = document.getElementById('casilla-6')
-  //     const casilla_7 = document.getElementById('casilla-7')
-  //     const casilla_8 = document.getElementById('casilla-8')
-  //     const casilla_9 = document.getElementById('casilla-9')
-    
-  //   casilla_1.appendChild(imagen1)
+          if (tabla[casillaIndex] === 0 && isPlayerTurn) { // Verificar si la casilla está vacía
+            casilla.textContent = circulo; // Mostrar el movimiento del jugador
+            tabla[casillaIndex] = 1; // Actualizar la tabla con el movimiento del jugador
+            isPlayerTurn = false; // Cambiar el turno
+            console.log("Tabla actualizada:", tabla);
 
-  //   tabla.push(casilla_1)
+            // Aquí iría la llamada a la función para que el modelo prediga el siguiente movimiento
+            predictWithModel();
+          }
+        }
 
-  //   console.log("imagen:", casilla_1)
+        // Añadir event listener a cada casilla
+        const casillas = document.querySelectorAll('.table div');
+        casillas.forEach(casilla => {
+          casilla.addEventListener('click', handleCasillaClick);
+        });
 
-  //   console.log("array de imágenes:", tabla)
+        // Ejemplo de cómo podrías usar el array `tabla` para crear un tensor y predecir con el modelo de TensorFlow.js
+        async function predictWithModel() {
+          if (!isPlayerTurn) {
+            tf.ready().then(async () => {
+              const model = await tf.loadLayersModel('model/ttt_model.json');
+              const tensorTabla = tf.tensor(tabla, [1, 9]);
+              const result = model.predict(tensorTabla);
+              const prediction = result.argMax(-1).dataSync()[0]; // Índice del mejor movimiento predicho
 
-  //   console.log("img:", imagen1)
+              tabla[prediction] = -1; // Actualizar la tabla con el movimiento del modelo
+              document.getElementById(`casilla-${prediction + 1}`).textContent = equis; // Mostrar el movimiento del modelo
 
-  //   })
-
-  //   const casilla_2 = document.getElementById('casilla-2')
-  //   casilla_2.addEventListener('click', () => {
-      
-  //     const imagen2 = new Image()
-  //     imagen2.src = 'circulo.jpg'
-
-  //   const casilla_2 = document.getElementById('casilla-2')
-  //   const casilla_3 = document.getElementById('casilla-3')
-  //   const casilla_4 = document.getElementById('casilla-4')
-  //   const casilla_5 = document.getElementById('casilla-5')
-  //   const casilla_6 = document.getElementById('casilla-6')
-  //   const casilla_7 = document.getElementById('casilla-7')
-  //   const casilla_8 = document.getElementById('casilla-8')
-  //   const casilla_9 = document.getElementById('casilla-9')
-  //     tabla.push(imagen2)
-  //     tabla.push(casilla_1)
-  //     tabla.push(casilla_3)
-  //     tabla.push(casilla_4)
-  //     tabla.push(casilla_5)
-  //     tabla.push(casilla_6)
-  //     tabla.push(casilla_7)
-  //     tabla.push(casilla_8)
-  //     tabla.push(casilla_9)
-
-  //   console.log("array de imágenes actualizado:", tabla)
-
-  //   })
-
-  //   const casilla_3 = document.getElementById('casilla-3')
-  //   casilla_3.addEventListener('click', () => {
-  //     casilla_3.style.backgroundImage = 'url(circulo.jpg)'
-  //     casilla_3.style.backgroundRepeat = 'no-repeat'
-  //   })
-
-  //   const casilla_4 = document.getElementById('casilla-4')
-  //   casilla_4.addEventListener('click', () => {
-  //     casilla_4.style.backgroundImage = 'url(circulo.jpg)'
-  //     casilla_4.style.backgroundRepeat = 'no-repeat'
-  //   })
-
-  //   const casilla_5 = document.getElementById('casilla-5')
-  //   casilla_5.addEventListener('click', () => {
-  //     casilla_5.style.backgroundImage = 'url(circulo.jpg)'
-  //     casilla_5.style.backgroundRepeat = 'no-repeat'
-  //   })
-
-  //   const casilla_6 = document.getElementById('casilla-6')
-  //   casilla_6.addEventListener('click', () => {
-  //     casilla_6.style.backgroundImage = 'url(circulo.jpg)'
-  //     casilla_6.style.backgroundRepeat = 'no-repeat'
-  //   })
-
-  //   const casilla_7 = document.getElementById('casilla-7')
-  //   casilla_7.addEventListener('click', () => {
-  //     casilla_7.style.backgroundImage = 'url(circulo.jpg)'
-  //     casilla_7.style.backgroundRepeat = 'no-repeat'
-  //   })
-
-  //   const casilla_8 = document.getElementById('casilla-8')
-  //   casilla_8.addEventListener('click', () => {
-  //     casilla_8.style.backgroundImage = 'url(circulo.jpg)'
-  //     casilla_8.style.backgroundRepeat = 'no-repeat'
-  //   })
-
-  //   const casilla_9 = document.getElementById('casilla-9')
-  //   casilla_9.addEventListener('click', () => {
-  //     casilla_9.style.backgroundImage = 'url(circulo.jpg)'
-  //     casilla_9.style.backgroundRepeat = 'no-repeat'
-  //   })
-         
-tf.ready().then(() => {
-  const modelPath = 'model/ttt_model.json'
-  tf.tidy(() => {
-    tf.loadLayersModel(modelPath)
-    .then((model) => {
-
-      const jugadorJuega = (casillaID) => {
-        const casilla = document.getElementById(casillaID)
-        casilla.style.backgroundImage = 'url(circulo.jpg)'
-        casilla.style.backgroundRepeat = 'no-repeat'
-        
-        let tablaVacia = tf.zeros([9])
-        
-        tablaVacia = tf.tensor([0, 0, 0, 0, 0, 0, 0, 0, 0])
-        const matches = tf.stack([tablaVacia])
-        return matches;
-      }
-
-      result.reshape([3, 3]).print()
-
-
-
-      const casilla_1 = document.getElementById('casilla-1')
-      casilla_1.addEventListener('click', () => {
-
-        tablaVacia = tf.tensor([1, 0, 0, 0, 0, 0, 0, 0, 0])
-        const matches = tf.stack([tablaVacia])
-        const result = model.predict(matches)
-
-      result.reshape([3, 3]).print()
-
-        let array = result.arraySync()
-        
-        const newArray = result[0] = 1
-  
-        let valorAlto = -Infinity;
-  
-        array.forEach((value, index) => {
-              value.forEach(element => {
-                const item = element * 100
-                valorAlto = Math.max(valorAlto, item);
-                console.log("valoress: ", item);
-              });
-              console.log("valor alto:", valorAlto, " indice:", (value.length)) 
-  
+              isPlayerTurn = true; // Cambiar el turno de vuelta al jugador
+              console.log("Tabla actualizada por el modelo:", tabla);
             });
-      })
-    })
-
-
-  })
-})
+          }
+        }
+      });
 </script>
   </body>
 </html>
