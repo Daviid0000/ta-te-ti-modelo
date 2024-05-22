@@ -1,184 +1,95 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet"></script>;
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>;
-    <link rel="stylesheet" href="./style.css">
-  </head>
-  <body>
-    <h1>Console Log for Ticky Tacky Toe Goodness</h1>
-    <div class="table">
-        <div id="casilla-1">
-            
-        </div>
-          <div id="casilla-2"></div>
-          <div id="casilla-3"></div>
-          <div id="casilla-4"></div>
-          <div id="casilla-5"></div>
-          <div id="casilla-6"></div>
-          <div id="casilla-7"></div>
-          <div id="casilla-8"></div>
-          <div id="casilla-9"></div>
-        </div>
-<script>
-  // var tabla = []
-  // const circulo = 'circulo.jpg'
-  // const equis = 'equis.jpg'
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.0.0/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.11.0"></script>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <h1>Console Log for Ticky Tacky Toe Goodness</h1>
+  <div class="table">
+    <div id="casilla-1" class="casilla"></div>
+    <div id="casilla-2" class="casilla"></div>
+    <div id="casilla-3" class="casilla"></div>
+    <div id="casilla-4" class="casilla"></div>
+    <div id="casilla-5" class="casilla"></div>
+    <div id="casilla-6" class="casilla"></div>
+    <div id="casilla-7" class="casilla"></div>
+    <div id="casilla-8" class="casilla"></div>
+    <div id="casilla-9" class="casilla"></div>
+  </div>
 
-  //   const casilla_1 = document.getElementById('casilla-1')
-  //   casilla_1.addEventListener('click', async () => {
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      let tabla = [];
+      const circulo = 'circulo.jpg';
+      const equis = 'equis.jpg';
+      let model;
 
-  //   const imagen1 = new Image()
-  //     imagen1.src = circulo
-
-  //     if(imagen1 == circulo){
-  //       console.log("¡La imagen es un cirCULO!")
-  //     }
-      
-  //     const casilla_2 = document.getElementById('casilla-2')
-  //     const casilla_3 = document.getElementById('casilla-3')
-  //     const casilla_4 = document.getElementById('casilla-4')
-  //     const casilla_5 = document.getElementById('casilla-5')
-  //     const casilla_6 = document.getElementById('casilla-6')
-  //     const casilla_7 = document.getElementById('casilla-7')
-  //     const casilla_8 = document.getElementById('casilla-8')
-  //     const casilla_9 = document.getElementById('casilla-9')
-    
-  //   casilla_1.appendChild(imagen1)
-
-  //   tabla.push(casilla_1)
-
-  //   console.log("imagen:", casilla_1)
-
-  //   console.log("array de imágenes:", tabla)
-
-  //   console.log("img:", imagen1)
-
-  //   })
-
-  //   const casilla_2 = document.getElementById('casilla-2')
-  //   casilla_2.addEventListener('click', () => {
-      
-  //     const imagen2 = new Image()
-  //     imagen2.src = 'circulo.jpg'
-
-  //   const casilla_2 = document.getElementById('casilla-2')
-  //   const casilla_3 = document.getElementById('casilla-3')
-  //   const casilla_4 = document.getElementById('casilla-4')
-  //   const casilla_5 = document.getElementById('casilla-5')
-  //   const casilla_6 = document.getElementById('casilla-6')
-  //   const casilla_7 = document.getElementById('casilla-7')
-  //   const casilla_8 = document.getElementById('casilla-8')
-  //   const casilla_9 = document.getElementById('casilla-9')
-  //     tabla.push(imagen2)
-  //     tabla.push(casilla_1)
-  //     tabla.push(casilla_3)
-  //     tabla.push(casilla_4)
-  //     tabla.push(casilla_5)
-  //     tabla.push(casilla_6)
-  //     tabla.push(casilla_7)
-  //     tabla.push(casilla_8)
-  //     tabla.push(casilla_9)
-
-  //   console.log("array de imágenes actualizado:", tabla)
-
-  //   })
-
-  //   const casilla_3 = document.getElementById('casilla-3')
-  //   casilla_3.addEventListener('click', () => {
-  //     casilla_3.style.backgroundImage = 'url(circulo.jpg)'
-  //     casilla_3.style.backgroundRepeat = 'no-repeat'
-  //   })
-
-  //   const casilla_4 = document.getElementById('casilla-4')
-  //   casilla_4.addEventListener('click', () => {
-  //     casilla_4.style.backgroundImage = 'url(circulo.jpg)'
-  //     casilla_4.style.backgroundRepeat = 'no-repeat'
-  //   })
-
-  //   const casilla_5 = document.getElementById('casilla-5')
-  //   casilla_5.addEventListener('click', () => {
-  //     casilla_5.style.backgroundImage = 'url(circulo.jpg)'
-  //     casilla_5.style.backgroundRepeat = 'no-repeat'
-  //   })
-
-  //   const casilla_6 = document.getElementById('casilla-6')
-  //   casilla_6.addEventListener('click', () => {
-  //     casilla_6.style.backgroundImage = 'url(circulo.jpg)'
-  //     casilla_6.style.backgroundRepeat = 'no-repeat'
-  //   })
-
-  //   const casilla_7 = document.getElementById('casilla-7')
-  //   casilla_7.addEventListener('click', () => {
-  //     casilla_7.style.backgroundImage = 'url(circulo.jpg)'
-  //     casilla_7.style.backgroundRepeat = 'no-repeat'
-  //   })
-
-  //   const casilla_8 = document.getElementById('casilla-8')
-  //   casilla_8.addEventListener('click', () => {
-  //     casilla_8.style.backgroundImage = 'url(circulo.jpg)'
-  //     casilla_8.style.backgroundRepeat = 'no-repeat'
-  //   })
-
-  //   const casilla_9 = document.getElementById('casilla-9')
-  //   casilla_9.addEventListener('click', () => {
-  //     casilla_9.style.backgroundImage = 'url(circulo.jpg)'
-  //     casilla_9.style.backgroundRepeat = 'no-repeat'
-  //   })
-         
-tf.ready().then(() => {
-  const modelPath = 'model/ttt_model.json'
-  tf.tidy(() => {
-    tf.loadLayersModel(modelPath)
-    .then((model) => {
-
-      const jugadorJuega = (casillaID) => {
-        const casilla = document.getElementById(casillaID)
-        casilla.style.backgroundImage = 'url(circulo.jpg)'
-        casilla.style.backgroundRepeat = 'no-repeat'
-        
-        let tablaVacia = tf.zeros([9])
-        
-        tablaVacia = tf.tensor([0, 0, 0, 0, 0, 0, 0, 0, 0])
-        const matches = tf.stack([tablaVacia])
-        return matches;
+      async function loadModel() {
+        model = await tf.loadLayersModel('model/ttt_model.json');
       }
 
-      result.reshape([3, 3]).print()
+      function handleCasillaClick(event) {
+        const casilla = event.target;
+        if (casilla.children.length === 0) {
+          const imagen = new Image();
+          imagen.src = circulo;
+          casilla.appendChild(imagen);
 
+          updateTabla();
+          console.log("Array de imágenes:", tabla);
 
+          predictWithModel();
+        }
+      }
 
-      const casilla_1 = document.getElementById('casilla-1')
-      casilla_1.addEventListener('click', () => {
+      function updateTabla() {
+        tabla = [];
+        for (let i = 1; i <= 9; i++) {
+          const casilla = document.getElementById(`casilla-${i}`);
+          if (casilla.children.length > 0) {
+            const src = casilla.children[0].src;
+            if (src.includes(circulo)) {
+              tabla.push(1);
+            } else if (src.includes(equis)) {
+              tabla.push(-1);
+            }
+          } else {
+            tabla.push(0);
+          }
+        }
+      }
 
-        tablaVacia = tf.tensor([1, 0, 0, 0, 0, 0, 0, 0, 0])
-        const matches = tf.stack([tablaVacia])
-        const result = model.predict(matches)
+      async function predictWithModel() {
+        if (!model) return;
 
-      result.reshape([3, 3]).print()
+        const tensorTabla = tf.tensor(tabla, [1, 9]);
+        const prediction = model.predict(tensorTabla).argMax(1).dataSync();
+        const move = prediction[0];
 
-        let array = result.arraySync()
-        
-        const newArray = result[0] = 1
-  
-        let valorAlto = -Infinity;
-  
-        array.forEach((value, index) => {
-              value.forEach(element => {
-                const item = element * 100
-                valorAlto = Math.max(valorAlto, item);
-                console.log("valoress: ", item);
-              });
-              console.log("valor alto:", valorAlto, " indice:", (value.length)) 
-  
-            });
-      })
-    })
+        // Actualizar el tablero con el movimiento del modelo
+        const casillaId = `casilla-${move + 1}`;
+        const casilla = document.getElementById(casillaId);
+        if (casilla.children.length === 0) {
+          const imagen = new Image();
+          imagen.src = equis;
+          casilla.appendChild(imagen);
 
+          updateTabla();
+          console.log("Array de imágenes después del movimiento del modelo:", tabla);
+        }
+      }
 
-  })
-})
-</script>
-  </body>
+      // Añadir event listener a cada casilla
+      const casillas = document.querySelectorAll('.casilla');
+      casillas.forEach(casilla => {
+        casilla.addEventListener('click', handleCasillaClick);
+      });
+
+      // Cargar el modelo de TensorFlow.js
+      loadModel();
+    });
+  </script>
+</body>
 </html>
